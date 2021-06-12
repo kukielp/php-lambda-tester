@@ -1,0 +1,10 @@
+# Do not export those files in the Composer archive (lighter dependency)
+.docker/ export-ignore
+.github/ export-ignore
+bin/ export-ignore
+build/ export-ignore
+tests/ export-ignore
+Makefile export-ignore
+CHANGELOG.md export-ignore
+docker-compose.yml export-ignore
+phpstan.neon export-ignore

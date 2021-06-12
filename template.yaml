@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description:  0.3 - Using Amazon CloudFront to cache and route static requests directly to S3.
+Transform: AWS::Serverless-2016-10-31
+
+##########################################################################
+#  Parameters & Globals                                                  #
+##########################################################################
+Globals:
+  Function:
+    Timeout: 3
+    
+Resources:
+##########################################################################
+#  Lambda function with PHP runtime provided by layers                   #
+##########################################################################
+  CatchAllLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Lambda function to hosts entire application codebase
+      CodeUri: ./code/
+      Runtime: provided
+      Handler: index.php
+      MemorySize: 4096
+      Timeout: 30
+      Tracing: Active
+      Layers:
+        - 'arn:aws:lambda:{yourregion}:209497400698:layer:php-73-fpm:25'
+      Events:
+        DynamicRequestsRoot:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+        DynamicRequestsProxy:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+##########################################################################
+#  Stack Outputs                                                         #
+##########################################################################  
+Outputs:
+  WebEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"

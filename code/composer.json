@@ -1,0 +1,6 @@
+{
+    "require": {
+        "bref/bref": "^1.2",
+        "google/apiclient": "^2.7"
+    }
+}
