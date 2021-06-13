@@ -19,9 +19,10 @@ This installes php and composer, next we will install bref
 ```
 cd code
 php ../composer.phar require bref/bref
+php ../composer.phar guzzlehttp/guzzle
 ```
 
-Oh now didn't work neds 1 more dependancy
+Oh no didn't work needs 1 more dependancy
 ```
 sudo yum install php-mbstring
 ```
