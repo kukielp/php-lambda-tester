@@ -3,6 +3,7 @@
 In Cloud 9 do the following:
 
 ```
+git clone https://github.com/kukielp/php-lambda-tester
 sudo yum -y update
 sudo amazon-linux-extras install -y php7.2
 
