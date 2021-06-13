@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description:  0.3 - Using Amazon CloudFront to cache and route static requests directly to S3.
+Description:  Testing PHP and Lambda
 Transform: AWS::Serverless-2016-10-31
 
 ##########################################################################
@@ -24,7 +24,7 @@ Resources:
       Timeout: 30
       Tracing: Active
       Layers:
-        - 'arn:aws:lambda:{yourregion}:209497400698:layer:php-73-fpm:25'
+        - 'arn:aws:lambda:{your-region}:209497400698:layer:php-73-fpm:25'
       Events:
         DynamicRequestsRoot:
           Type: Api
